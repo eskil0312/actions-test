@@ -4,7 +4,7 @@
       ],
       "mode": "library",
       "includeDeclarations": true,
-      "out": "./docs ./src/index.ts",
+      "out": "docs",
       "readme": "README.md",
       "name": "Actions test",
       "ignoreCompilerErrors": true,
