@@ -1,0 +1,39 @@
+name: Build docs
+
+on:
+    release:
+      types: 
+        - published
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            node-version: [12.x]
+        steps:
+        - uses: actions/checkout@v2
+          with:
+            ref: docs
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Configure git
+          run: |
+            git config --local user.email "eskilsand@outlook.com"
+            git config --local user.name "GitHub Action by Eskil"
+        - name: Checkout docs and merge master
+          run: |
+            git merge master
+        - name: npm install and build docs
+          run: |
+            npm ci
+            npx typedoc
+        - name: Commit changes and push
+          run: |
+            git add -A
+            git commit -m "Build docs" || true
+            git push
+          env:
+            CI: true
