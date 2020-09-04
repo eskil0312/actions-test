@@ -26,7 +26,7 @@ jobs:
             git config --local user.name "GitHub Action by Eskil"
         - name: Checkout docs and merge master
           run: |
-            git merge master
+            git merge origin/master
         - name: npm install and build docs
           run: |
             npm ci
