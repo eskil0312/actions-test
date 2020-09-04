@@ -6,7 +6,7 @@
       "includeDeclarations": true,
       "out": "./docs ./src/index.ts",
       "readme": "README.md",
-      "name": "Fusion api",
+      "name": "Actions test",
       "ignoreCompilerErrors": true,
       "plugin": "none"
 }
